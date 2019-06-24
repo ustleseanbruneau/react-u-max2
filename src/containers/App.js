@@ -30,9 +30,9 @@ class App extends Component {
     return state;
   }
 
-  componentWillMount() {
-    console.log('[App.js] componentWillMount');
-  }
+  // componentWillMount() {
+  //   console.log('[App.js] componentWillMount');
+  // }
 
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons];
