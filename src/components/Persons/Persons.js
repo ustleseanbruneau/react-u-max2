@@ -13,6 +13,7 @@ class Persons extends Component {
         console.log('[Persons.js] componentWillReceiveProps', props);
     }
  */
+    // shouldComponentUpdate() - only available in class based components
     shouldComponentUpdate(nextProps, nextState) {
         console.log('Persons.js shouldComponentUpdate');
         if (nextProps.persons !== this.props.persons) {
