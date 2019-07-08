@@ -5,6 +5,9 @@ import classes from './App.css';
 //import Radium, { StyleRoot } from 'radium';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+//import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Auxiliary';
 
 
 class App extends Component {
@@ -89,11 +92,11 @@ class App extends Component {
             changed={this.nameChangedHandler}
           />
       );
-
     }
 
+    /*
     return (
-        <div className={classes.App}>
+        <WithClass classes={classes.App}>
           <button onClick={() => {this.setState({showCockpit: false})}}>Remove Cockpit</button>
           {this.state.showCockpit ? <Cockpit 
             title={this.props.appTitle}
@@ -102,10 +105,25 @@ class App extends Component {
             clicked={this.togglePersonsHandler} 
           /> : null}
           {persons}
-        </div>
+        </WithClass>
+    );
+    */
+
+    return (
+        <Aux>
+          <button onClick={() => {this.setState({showCockpit: false})}}>Remove Cockpit</button>
+          {this.state.showCockpit ? <Cockpit 
+            title={this.props.appTitle}
+            showPersons={this.state.showPersons}
+            personsLength={this.state.persons.length}
+            clicked={this.togglePersonsHandler} 
+          /> : null}
+          {persons}
+        </Aux>
     );
 
   }
 }
 
-export default App;
+//export default App;
+export default withClass(App, classes.App);
