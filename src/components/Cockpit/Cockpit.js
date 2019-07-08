@@ -7,6 +7,7 @@ const Cockpit = props => {
 
   const toggleBtnRef = useRef(null);
 
+  /// useEffect runs after function is rendered
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
     // setTimeout(() => {
@@ -47,6 +48,7 @@ const Cockpit = props => {
       <button ref={toggleBtnRef}
         className={btnClass}
         onClick={props.clicked}>Toggle Persons</button>
+      <button onClick={props.login}>Log in</button>
     </div>
   );
 };
