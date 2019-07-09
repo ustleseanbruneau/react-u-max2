@@ -9,29 +9,29 @@ class Persons extends PureComponent {
     //     return state;
     // }
 
-/*  
-    Deprecated - no longer used by newer versions of React
-    componentWillReceiveProps(props) {
-        console.log('[Persons.js] componentWillReceiveProps', props);
-    }
- */
+    /*  
+        Deprecated - no longer used by newer versions of React
+        componentWillReceiveProps(props) {
+            console.log('[Persons.js] componentWillReceiveProps', props);
+        }
+     */
     // shouldComponentUpdate() - only available in class based components
     // Save some code by importing PureComponent
-/*     shouldComponentUpdate(nextProps, nextState) {
-        console.log('Persons.js shouldComponentUpdate');
-        if (nextProps.persons !== this.props.persons || 
-            nextProps.changed !== this.props.changed || 
-            nextProps.clicked !== this.props.clicked) {
-            return true;
-        } else {
-            return false;
-        }
-        //return true;
-    } */
+    /*     shouldComponentUpdate(nextProps, nextState) {
+            console.log('Persons.js shouldComponentUpdate');
+            if (nextProps.persons !== this.props.persons || 
+                nextProps.changed !== this.props.changed || 
+                nextProps.clicked !== this.props.clicked) {
+                return true;
+            } else {
+                return false;
+            }
+            //return true;
+        } */
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate');
-        return { message: 'Snapshot!'};
+        return { message: 'Snapshot!' };
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -50,10 +50,9 @@ class Persons extends PureComponent {
                     age={person.age}
                     key={person.id}
                     changed={(event) => this.props.changed(event, person.id)}
-                    isAuth={this.props.isAuthenticated}
                 />
             );
-        });
+        })
     }
 }
 

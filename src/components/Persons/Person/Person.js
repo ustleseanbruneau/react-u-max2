@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import AuthContext from '../../../context/auth-context';
 
 import Aux from '../../../hoc/Auxiliary';
 import classes from './Person.css';
@@ -12,9 +13,13 @@ class Person extends Component {
         this.inputElementRef = React.createRef();
     }
 
+    // React 16.6
+    static contextType = AuthContext;
+
     componentDidMount() {
         ///this.inputElement.focus();
         this.inputElementRef.current.focus();
+        console.log(this.context.authenticated);
     }
 
     render() {
@@ -22,9 +27,18 @@ class Person extends Component {
 
         // Replace <Aux> with <Fragment> or <React.Fragment> without import
 
+                /*
+                <AuthContext.Consumer>
+                    {(context) => 
+                        context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p> 
+                    }
+                </AuthContext.Consumer>
+                */
+
         return (
             <Aux>
-                {this.props.isAuth ? <p>Authenticated!</p> : <p>Please log in</p>} 
+                {this.context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p> }
+
                 <p key="i1" onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
                 <p key="i2">{this.props.children}</p>
                 <input 

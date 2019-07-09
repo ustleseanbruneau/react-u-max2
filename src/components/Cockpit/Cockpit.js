@@ -1,11 +1,15 @@
 //import React from 'react';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 
 import classes from './Cockpit.css';
+import AuthContext from '../../context/auth-context';
 
 const Cockpit = props => {
 
   const toggleBtnRef = useRef(null);
+  const authContext = useContext(AuthContext);
+
+  console.log(authContext.authenticated);
 
   /// useEffect runs after function is rendered
   useEffect(() => {
@@ -41,14 +45,22 @@ const Cockpit = props => {
     assignedClasses.push(classes.bold);
   }
 
+  /*
+  <AuthContext.Consumer>
+  {context => <button onClick={context.login}>Log in</button>}
+</AuthContext.Consumer>
+*/
+
   return (
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(' ')}>This is really working!</p>
       <button ref={toggleBtnRef}
         className={btnClass}
-        onClick={props.clicked}>Toggle Persons</button>
-      <button onClick={props.login}>Log in</button>
+        onClick={props.clicked}>Toggle Persons
+      </button>
+      <button onClick={authContext.login}>Log in</button>
+
     </div>
   );
 };
